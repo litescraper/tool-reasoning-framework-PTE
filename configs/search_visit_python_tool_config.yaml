@@ -1,0 +1,54 @@
+tools:
+  - class_name: "tools.search_tool.GoogleSearchTool"
+    config:
+      type: "native"
+    tool_schema:
+      type: "function"
+      function:
+        name: "google_search_tool"
+        description: "Performs batched web searches: supply a list of queries; the tool retrieves the top 10 results for each query in one call, each including a title, URL, and abstract. Use these abstracts to evaluate the relevance of each result and determine which URL to visit for more detailed information based on the original query."
+        parameters:
+          type: "object"
+          properties:
+            query:
+              type: "array"
+              items:
+                type: "string"
+              description: "Array of query strings. Include multiple complementary search queries in a single call."
+          required: ["query"]
+
+  - class_name: "tools.visit_tool.VisitTool"
+    config:
+      type: "native"
+    tool_schema:
+      type: "function"
+      function:
+        name: "visit_tool"
+        description: "Visit a single webpage URL and return a concise summary of the content tailored to the goal provided. The goal should be directly derived from the original question to ensure the summary extracts only the most relevant information. The summary should include key facts, dates, names, or events as applicable."
+        parameters:
+          type: "object"
+          properties:
+            url:
+              type: "string"
+              description: "The URL of the webpage to visit."
+            goal:
+              type: "string"
+              description: "The goal of the visit for the webpage."
+          required: ["url", "goal"]
+  
+  - class_name: "tools.python_tool.PythonTool"
+    config: 
+      type: "native"
+    tool_schema:
+      type: "function"
+      function:
+        name: "python_tool"
+        description: "A tool for executing Python code in a sandboxed environment. Input Python code and get the execution results including stdout and stderr. Your code must contain at least one `print()` call; otherwise the tool produces **no output** and you will receive an empty result."
+        parameters:
+          type: "object"
+          properties:
+            code:
+              type: "string"
+              description: "Valid Python code. End with `print()` to expose the final answer or any intermediate values. No interactive input; rely only on print for visible results."
+          required: ["code"]
+

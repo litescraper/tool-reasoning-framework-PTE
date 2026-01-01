@@ -1,0 +1,17 @@
+tools:
+  - class_name: "tools.python_tool.PythonTool"
+    config: 
+      type: "native"
+    tool_schema:
+      type: "function"
+      function:
+        name: "python_tool"
+        description: "A tool for executing Python code in a sandboxed environment. Input Python code and get the execution results including stdout and stderr. Your code must contain at least one `print()` call; otherwise the tool produces **no output** and you will receive an empty result."
+        parameters:
+          type: "object"
+          properties:
+            code:
+              type: "string"
+              description: "Valid Python code. End with `print()` to expose the final answer or any intermediate values. No interactive input; rely only on print for visible results."
+          required: ["code"]
+

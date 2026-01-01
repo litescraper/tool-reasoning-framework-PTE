@@ -1,0 +1,24 @@
+# Core dependencies
+openai>=1.0.0
+httpx>=0.24.0
+pydantic>=2.0.0
+pyyaml>=6.0
+tqdm>=4.65.0
+tenacity>=8.2.0
+jsonlines>=3.1.0
+pandas>=2.0.0
+transformers>=4.30.0
+
+# Service dependencies (for FastAPI services)
+fastapi>=0.100.0
+uvicorn>=0.23.0
+requests>=2.31.0
+
+# Python tool dependency
+sandbox_fusion  # For Python code execution sandbox
+
+# Analysis dependencies
+matplotlib>=3.5.0
+numpy>=1.21.0
+scipy>=1.7.0
+

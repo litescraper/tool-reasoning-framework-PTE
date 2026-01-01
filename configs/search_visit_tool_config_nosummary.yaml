@@ -1,0 +1,38 @@
+tools:
+  - class_name: "tools.search_tool_nosummary.ESSearchToolNoSummary"
+    config:
+      type: "native"
+    tool_schema:
+      type: "function"
+      function:
+        name: "google_search_tool"
+        description: "Performs batched web searches: supply a list of queries; the tool retrieves the top 10 results for each query in one call, each including a title, URL, and abstract. Use these abstracts to evaluate the relevance of each result and determine which URL to visit for more detailed information based on the original query."
+        parameters:
+          type: "object"
+          properties:
+            query:
+              type: "array"
+              items:
+                type: "string"
+              description: "Array of query strings. Include multiple complementary search queries in a single call."
+          required: ["query"]
+
+  - class_name: "tools.visit_tool_nosummary.VisitToolNoSummary"
+    config:
+      type: "native"
+    tool_schema:
+      type: "function"
+      function:
+        name: "visit_tool"
+        description: "Visit a single webpage URL and return the raw content without summary extraction. The goal parameter is kept for compatibility but not used for extraction."
+        parameters:
+          type: "object"
+          properties:
+            url:
+              type: "string"
+              description: "The URL of the webpage to visit."
+            goal:
+              type: "string"
+              description: "The goal of the visit for the webpage (kept for compatibility)."
+          required: ["url", "goal"]
+
