@@ -467,3 +467,12 @@ Evaluation results are saved in JSONL format with the following structure:
 ## License
 
 See LICENSE file for details.
+
+
+## Serper-compatible endpoints
+
+Set `SERPER_BASE_URL` to a compatible API base (without a search route) and
+use that provider's key in the existing Serper API-key configuration. The
+base defaults to `https://google.serper.dev`; trailing slashes are removed
+before adding the existing route. Separate page-scraping endpoints are unchanged.
+Support any Serper.dev-compatible endpoint (like litescrape.com, serpbase.dev, serpensapi.org, and others).

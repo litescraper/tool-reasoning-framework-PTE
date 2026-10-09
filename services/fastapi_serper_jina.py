@@ -97,7 +97,7 @@ async def serper_api(request: Request):
     for attempt in range(max_retries):
         try:
             r = requests.post(
-                "https://google.serper.dev/search",
+                f'{os.getenv("SERPER_BASE_URL", "https://google.serper.dev").rstrip("/")}/search',
                 headers={"X-API-KEY": SERPER_API_KEY, "Content-Type": "application/json"},
                 json=payload,
                 timeout=30

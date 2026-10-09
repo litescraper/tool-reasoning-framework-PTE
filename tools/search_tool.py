@@ -69,7 +69,7 @@ class GoogleSearchTool(BaseTool):
     async def _google_search(self, query, k: int = 10) -> str:
         """Perform Google search using Serper API."""
         SERPER_API_KEY = os.getenv("SERPER_API_KEY", "")
-        url = "https://google.serper.dev/search"
+        url = f'{os.getenv("SERPER_BASE_URL", "https://google.serper.dev").rstrip("/")}/search'
 
         headers = {
             "X-API-KEY": SERPER_API_KEY,
